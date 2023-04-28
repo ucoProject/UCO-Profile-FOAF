@@ -1,8 +1,8 @@
-# UCO Profile: Example
+# UCO Profile: FOAF
 
 ![Repository Status](https://img.shields.io/badge/-exploratory-informational)
 
-This repository explores UCO under a usage profile assuming adoption of [Example](http://example.org/ontology).
+This repository explores UCO under a usage profile assuming adoption of [Friend-of-a-Friend](http://xmlns.com/foaf/0.1/) (FOAF).
 
 The CDO Profile development rationale and design is [here](https://cyberdomainontology.org/ontology/development/#profiles).
 

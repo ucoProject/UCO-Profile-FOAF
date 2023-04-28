@@ -41,7 +41,6 @@ all: \
 # dependency on other profiles.
 .git_submodule_init_imports.done.log: \
   .gitmodules
-	# TODO - Initialize non-CDO submodule here.
 	touch $@
 
 .git_submodule_init.done.log: \

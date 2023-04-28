@@ -1,0 +1,31 @@
+# imports: http://xmlns.com/foaf/0.1/
+# imports: https://ontology.unifiedcyberontology.org/uco/uco/1.2.0
+
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
+@prefix uco-observable: <https://ontology.unifiedcyberontology.org/uco/observable/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/ontology/uco-foaf>
+	a owl:Ontology ;
+	owl:imports
+		<http://xmlns.com/foaf/0.1/> ,
+		<https://ontology.unifiedcyberontology.org/uco/uco/1.2.0>
+		;
+	.
+
+uco-identity:Organization
+	rdfs:subClassOf foaf:Organization ;
+	.
+
+uco-identity:Person
+	rdfs:subClassOf foaf:Person ;
+	.
+
+uco-observable:WebPage
+	rdfs:subClassOf foaf:Document ;
+	.
+
