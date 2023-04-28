@@ -57,10 +57,10 @@ clean:
 
 monolithic.ttl: \
   $(RDF_TOOLKIT_JAR) \
+  $(top_srcdir)/.venv.done.log \
   $(top_srcdir)/dependencies/imports-transitive.ttl \
   $(profile_ttls) \
-  $(shape_ttls) \
-  $(top_srcdir)/.venv.done.log
+  $(shape_ttls)
 	$(MAKE) \
 	  --directory $(top_srcdir)/dependencies/UCO \
 	  .venv.done.log

@@ -154,9 +154,11 @@ check-supply-chain: \
   check-supply-chain-submodules
 
 check-supply-chain-cdo-profile:
-	git remote add \
+	git remote get-url \
 	  _CHECK_SUPPLY_CHAIN_upstream \
-	  https://github.com/ucoProject/UCO-Profile-Example.git
+	  || git remote add \
+	    _CHECK_SUPPLY_CHAIN_upstream \
+	    https://github.com/ucoProject/UCO-Profile-Example.git
 	git fetch \
 	  _CHECK_SUPPLY_CHAIN_upstream
 	test \
