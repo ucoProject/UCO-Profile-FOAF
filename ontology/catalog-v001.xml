@@ -20,6 +20,6 @@
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/ontology/uco/types/types.ttl" name="https://ontology.unifiedcyberontology.org/uco/types/1.2.0"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/ontology/uco/victim/victim.ttl" name="https://ontology.unifiedcyberontology.org/uco/victim/1.2.0"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/ontology/uco/vocabulary/vocabulary.ttl" name="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.2.0"/>
-    <uri id="User Entered Import Resolution" uri="../dependencies/example.ttl" name="http://example.org/ontology/example/0.0.1"/>
-    <uri id="User Entered Import Resolution" uri="uco-example.ttl" name="http://example.org/ontology/uco-example"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/foaf.ttl" name="http://xmlns.com/foaf/0.1/"/>
+    <uri id="User Entered Import Resolution" uri="uco-foaf.ttl" name="http://example.org/ontology/uco-foaf"/>
 </catalog>
