@@ -161,6 +161,9 @@ check-supply-chain-cdo-profile:
 	    https://github.com/ucoProject/UCO-Profile-Example.git
 	git fetch \
 	  _CHECK_SUPPLY_CHAIN_upstream
+	@echo "DEBUG:Makefile:$$(git merge-base _CHECK_SUPPLY_CHAIN_upstream/base HEAD) (merge-base)" >&2
+	@echo "DEBUG:Makefile:$$(git rev-parse _CHECK_SUPPLY_CHAIN_upstream/base) (base)" >&2
+	@echo "DEBUG:Makefile:$$(git rev-parse HEAD) (HEAD)" >&2
 	test \
 	  "x$$(git merge-base _CHECK_SUPPLY_CHAIN_upstream/base HEAD)" \
 	  == \
