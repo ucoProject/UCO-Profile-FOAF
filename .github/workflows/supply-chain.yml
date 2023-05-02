@@ -15,7 +15,7 @@
 # This workflow uses Make to review direct dependencies of this
 # repository.
 
-name: Continuous Integration
+name: Supply Chain
 
 on:
   schedule:
@@ -33,6 +33,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
