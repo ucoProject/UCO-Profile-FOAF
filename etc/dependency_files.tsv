@@ -1,2 +1,2 @@
-http://xmlns.com/foaf/0.1/	${top_srcdir}/dependencies/foaf.ttl
-http://example.org/shapes/foaf	${top_srcdir}/shapes/sh-foaf.ttl
+http://xmlns.com/foaf/0.1/	${top_srcdir}/dependencies/CDO-Shapes-FOAF/dependencies/foaf.ttl
+http://example.org/shapes/foaf	${top_srcdir}/dependencies/CDO-Shapes-FOAF/shapes/sh-foaf.ttl

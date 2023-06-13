@@ -18,11 +18,11 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
 
-uco_srcdir := $(top_srcdir)/dependencies/UCO
+uco_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/UCO
 
 profile_ttls := $(wildcard $(top_srcdir)/ontology/uco-*.ttl)
 
-shape_ttls := $(wildcard $(top_srcdir)/shapes/sh-*.ttl)
+shape_ttls := $(wildcard $(top_srcdir)/dependencies/CDO-Shapes-FOAF/shapes/sh-*.ttl)
 
 all: \
   monolithic.ttl
