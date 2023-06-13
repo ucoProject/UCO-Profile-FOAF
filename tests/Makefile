@@ -18,7 +18,7 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
 
-RDF_TOOLKIT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
+uco_srcdir := $(top_srcdir)/dependencies/UCO
 
 profile_ttls := $(wildcard $(top_srcdir)/ontology/uco-*.ttl)
 
@@ -32,6 +32,7 @@ all: \
   monolithic.ttl
 	source $(top_srcdir)/venv/bin/activate \
 	  && pyshacl \
+	    --metashacl \
 	    --ont-graph monolithic.ttl \
 	    --shacl monolithic.ttl \
 	    exemplars.ttl
@@ -56,29 +57,28 @@ clean:
 	  monolithic.ttl
 
 monolithic.ttl: \
-  $(RDF_TOOLKIT_JAR) \
   $(top_srcdir)/.venv.done.log \
   $(top_srcdir)/dependencies/imports-transitive.ttl \
   $(profile_ttls) \
   $(shape_ttls)
 	$(MAKE) \
-	  --directory $(top_srcdir)/dependencies/UCO \
+	  --directory $(uco_srcdir) \
 	  .venv.done.log
 	$(MAKE) \
-	  --directory $(top_srcdir)/dependencies/UCO/tests \
+	  --directory $(uco_srcdir)/tests \
 	  uco_monolithic.ttl
 	source $(top_srcdir)/venv/bin/activate \
 	  && rdfpipe \
 	    --output-format turtle \
-	    $(top_srcdir)/dependencies/UCO/dependencies/collections-ontology/collections.owl \
-	    $(top_srcdir)/dependencies/UCO/dependencies/error/docs/current/error.ttl \
-	    $(top_srcdir)/dependencies/UCO/tests/uco_monolithic.ttl \
 	    $(top_srcdir)/dependencies/imports-transitive.ttl \
 	    $(profile_ttls) \
 	    $(shape_ttls) \
+	    $(uco_srcdir)/dependencies/collections-ontology/collections.owl \
+	    $(uco_srcdir)/dependencies/error/docs/current/error.ttl \
+	    $(uco_srcdir)/tests/uco_monolithic.ttl \
 	    > _$@
 	source $(top_srcdir)/venv/bin/activate \
 	  && pyshacl \
-	    --shacl $(top_srcdir)/dependencies/UCO/ontology/owl/owl.ttl \
+	    --shacl $(uco_srcdir)/ontology/owl/owl.ttl \
 	    _$@
 	mv _$@ $@
