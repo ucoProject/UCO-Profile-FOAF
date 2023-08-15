@@ -37,6 +37,7 @@ def test_exemplar_coverage() -> None:
     """
     exemplar_graph = Graph()
     profile_graph = Graph()
+    tbox_graph = Graph()
     combined_graph = Graph()
 
     for filepath in (top_srcdir / "ontology").iterdir():
@@ -48,12 +49,15 @@ def test_exemplar_coverage() -> None:
             profile_graph.parse(filepath)
     logging.debug("len(profile_graph) = %d.", len(profile_graph))
 
+    monolithic_filepath = srcdir / "monolithic.ttl"
+    tbox_graph.parse(monolithic_filepath)
+
     exemplar_filepath = srcdir / "exemplars.ttl"
     logging.debug("Loading exemplars graph %r.", exemplar_filepath)
     exemplar_graph.parse(exemplar_filepath)
     logging.debug("len(exemplar_graph) = %d.", len(exemplar_graph))
 
-    combined_graph = exemplar_graph + profile_graph
+    combined_graph = exemplar_graph + tbox_graph
 
     classes_mapped: Set[URIRef] = set()
     classes_with_exemplars: Set[URIRef] = set()
