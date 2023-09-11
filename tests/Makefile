@@ -18,7 +18,9 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
 
-uco_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/UCO
+cdo_owl_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL
+
+uco_srcdir := $(top_srcdir)/dependencies/UCO
 
 profile_ttls := $(wildcard $(top_srcdir)/ontology/uco-*.ttl)
 
@@ -57,10 +59,11 @@ clean:
 	  monolithic.ttl
 
 monolithic.ttl: \
-  $(top_srcdir)/.venv.done.log \
-  $(top_srcdir)/dependencies/imports-transitive.ttl \
+  $(cdo_owl_srcdir)/shapes/sh-owl.ttl \
   $(profile_ttls) \
-  $(shape_ttls)
+  $(shape_ttls) \
+  $(top_srcdir)/.venv.done.log \
+  $(top_srcdir)/dependencies/imports-transitive.ttl
 	$(MAKE) \
 	  --directory $(uco_srcdir) \
 	  .venv.done.log
@@ -79,6 +82,6 @@ monolithic.ttl: \
 	    > _$@
 	source $(top_srcdir)/venv/bin/activate \
 	  && pyshacl \
-	    --shacl $(uco_srcdir)/ontology/owl/owl.ttl \
+	    --shacl $(cdo_owl_srcdir)/shapes/sh-owl.ttl \
 	    _$@
 	mv _$@ $@

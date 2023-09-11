@@ -2,3 +2,7 @@
 	path = dependencies/CDO-Shapes-FOAF
 	url = https://github.com/Cyber-Domain-Ontology/CDO-Shapes-FOAF.git
 	branch = main
+[submodule "dependencies/UCO"]
+	path = dependencies/UCO
+	url = https://github.com/ucoProject/UCO.git
+	branch = master
