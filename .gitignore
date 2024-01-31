@@ -3,4 +3,5 @@
 .*.done.log
 .check-*.ttl
 .venv-pre-commit
+__pycache__
 venv
