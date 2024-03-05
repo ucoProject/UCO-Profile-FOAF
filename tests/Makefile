@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
-# Portions of this file contributed by NIST are governed by the following
-# statement:
+# Portions of this file contributed by NIST are governed by the
+# following statement:
 #
 # This software was developed at the National Institute of Standards
 # and Technology by employees of the Federal Government in the course
@@ -30,14 +30,14 @@ all: \
   monolithic.ttl
 
 .pyshacl.done.log: \
-  exemplars.ttl \
+  exemplars-expanded.ttl \
   monolithic.ttl
 	source $(top_srcdir)/venv/bin/activate \
 	  && pyshacl \
 	    --metashacl \
 	    --ont-graph monolithic.ttl \
 	    --shacl monolithic.ttl \
-	    exemplars.ttl
+	    exemplars-expanded.ttl
 	touch $@
 
 .pytest.done.log: \
@@ -56,7 +56,31 @@ check: \
 clean:
 	@rm -f \
 	  .*.done.log \
+	  exemplars-entailment.ttl \
+	  exemplars-expanded.ttl \
 	  monolithic.ttl
+
+exemplars-entailment.ttl: \
+  $(top_srcdir)/.venv.done.log \
+  $(top_srcdir)/src/entail.py \
+  exemplars.ttl \
+  monolithic.ttl
+	source $(top_srcdir)/venv/bin/activate \
+	  && python3 $(top_srcdir)/src/entail.py \
+	    _$@ \
+	    exemplars.ttl \
+	    monolithic.ttl
+	mv _$@ $@
+
+exemplars-expanded.ttl: \
+  exemplars-entailment.ttl
+	source $(top_srcdir)/venv/bin/activate \
+	  && rdfpipe \
+	    --output-format turtle \
+	    exemplars.ttl \
+	    $< \
+	    > _$@
+	mv _$@ $@
 
 monolithic.ttl: \
   $(cdo_owl_srcdir)/shapes/sh-owl.ttl \
