@@ -25,6 +25,14 @@ ttl_basenames := $(wildcard uco-*.ttl)
 all: \
   catalog-v001.xml
 
+.pytest.done.log: \
+  $(top_srcdir)/.venv.done.log \
+  $(ttl_basenames)
+	source $(top_srcdir)/venv/bin/activate \
+	  && pytest \
+	    --log-level=DEBUG
+	touch $@
+
 catalog-v001.xml: \
   $(top_srcdir)/.venv.done.log \
   $(top_srcdir)/etc/domain_directories.tsv \
@@ -43,6 +51,7 @@ catalog-v001.xml: \
 	mv _$@ $@
 
 check: \
+  .pytest.done.log \
   catalog-v001.xml
 
 clean:
