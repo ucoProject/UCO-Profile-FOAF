@@ -41,6 +41,9 @@ def test_exemplar_coverage() -> None:
     combined_graph = Graph()
 
     for filepath in (top_srcdir / "ontology").iterdir():
+        if filepath.name.startswith("_"):
+            # Skip temporary build artifacts.
+            continue
         if filepath.name.startswith("."):
             # Skip quality control test artifacts.
             continue
