@@ -20,14 +20,17 @@ PYTHON3 ?= python3
 
 all: \
   .venv-pre-commit/var/.pre-commit-built.log \
-  all-ontology
+  all-ontology \
+  all-shapes
 
 .PHONY: \
   all-dependencies \
   all-ontology \
+  all-shapes \
   check-dependencies \
   check-mypy \
   check-ontology \
+  check-shapes \
   check-supply-chain \
   check-supply-chain-cdo-profile \
   check-supply-chain-pre-commit \
@@ -106,11 +109,22 @@ all-ontology: \
 	$(MAKE) \
 	  --directory ontology
 
+# NOTE: For profiles that don't include shapes, the $(top_srcdir)/shapes
+# directory might be missing.  Checking for its existence first relieves
+# each profile of needing to modify the top Makefile when removing
+# shapes.
+all-shapes: \
+  all-dependencies
+	test ! -d shapes \
+	  || $(MAKE) \
+	    --directory shapes
+
 check: \
   .venv-pre-commit/var/.pre-commit-built.log \
   check-mypy \
   check-dependencies \
-  check-ontology
+  check-ontology \
+  check-shapes
 	$(MAKE) \
 	  --directory tests \
 	  check
@@ -135,6 +149,17 @@ check-ontology: \
 	$(MAKE) \
 	  --directory ontology \
 	  check
+
+# NOTE: For profiles that don't include shapes, the $(top_srcdir)/shapes
+# directory might be missing.  Checking for its existence first relieves
+# each profile of needing to modify the top Makefile when removing
+# shapes.
+check-shapes: \
+  all-shapes
+	test ! -d shapes \
+	  || $(MAKE) \
+	    --directory shapes \
+	    check
 
 # This target's dependencies potentially modify the working directory's
 # Git state, so it is intentionally not a dependency of check.
@@ -205,6 +230,10 @@ clean:
 	@$(MAKE) \
 	  --directory tests \
 	  clean
+	@test ! -d shapes \
+	  || $(MAKE) \
+	    --directory shapes \
+	    clean
 	@$(MAKE) \
 	  --directory ontology \
 	  clean
