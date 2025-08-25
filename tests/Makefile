@@ -16,6 +16,8 @@
 
 SHELL := /bin/bash
 
+PYTHON3 ?= python3
+
 top_srcdir := $(shell cd .. ; pwd)
 
 cdo_owl_srcdir := $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL
@@ -93,6 +95,7 @@ monolithic.ttl: \
   $(top_srcdir)/.venv.done.log \
   $(top_srcdir)/dependencies/imports-transitive.ttl
 	$(MAKE) \
+	  PYTHON3=$(PYTHON3) \
 	  --directory $(uco_srcdir) \
 	  .venv.done.log
 	$(MAKE) \
