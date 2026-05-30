@@ -2,7 +2,7 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
     <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL/shapes/sh-owl.ttl" name="https://shapes.cyberdomainontology.org/sh-owl"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/CDO-Shapes-OWL/shapes/sh-owl.ttl" name="https://shapes.cyberdomainontology.org/sh-owl/1.4.0"/>
-    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/foaf.ttl" name="http://xmlns.com/foaf/0.1/"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/formatted-foaf.ttl" name="http://xmlns.com/foaf/0.1/"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/shapes/sh-foaf.ttl" name="http://example.org/shapes/sh-foaf"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/dependencies/collections-ontology/collections.owl" name="http://purl.org/co"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/dependencies/error/docs/current/error.ttl" name="http://purl.org/spar/error"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
-    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/foaf.ttl" name="http://xmlns.com/foaf/0.1/"/>
+    <uri id="User Entered Import Resolution" uri="../dependencies/CDO-Shapes-FOAF/dependencies/formatted-foaf.ttl" name="http://xmlns.com/foaf/0.1/"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/dependencies/collections-ontology/collections.owl" name="http://purl.org/co"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/dependencies/error/docs/current/error.ttl" name="http://purl.org/spar/error"/>
     <uri id="User Entered Import Resolution" uri="../dependencies/UCO/ontology/co/co.ttl" name="https://ontology.unifiedcyberontology.org/co"/>
