@@ -21,7 +21,7 @@ top_srcdir := $(shell cd .. ; pwd)
 uco_srcdir := $(top_srcdir)/dependencies/UCO
 
 generated_dependencies_ttls := \
-  $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/foaf.ttl \
+  $(top_srcdir)/dependencies/CDO-Shapes-FOAF/dependencies/formatted-foaf.ttl \
   $(uco_srcdir)/tests/uco_monolithic.ttl
 
 test_pys := $(wildcard test_*.py)
